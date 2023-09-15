@@ -3,15 +3,15 @@ import "dotenv/config";
 
 const db = new Sequelize({
   host: process.env.DB_HOST,
-  username: process.env.DB_USERNAME ,
-  database: process.env.DB_NAME ,
-  port: process.env.DB_PORT ,
+  username: process.env.DB_USERNAME,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
   password: process.env.DB_PASSWORD,
   dialect: "postgres",
-  dialectOptions: {ssl: {require: true, rejectUnauthorized: false}}
+  dialectOptions: {ssl: {required: true, rejectUnauthorized: false}}
 });
 
-// para local comentra dialecteOptions
+// para local comentar dialecteOptions
 
 export default db;
 
