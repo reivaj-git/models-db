@@ -49,14 +49,16 @@ app.post("/users", async (req, res) => {
     // mandar esta info a la base de datos
     // * insert into users (username, email, password)
     const user = await User.create(body);
-    res
-      .header("Access-Control-Allow-Origin", "http://localhost:5173")
-      .status(201)
-      .json(user);
+    res.status(201).json(user);
   } catch (error) {
     res.status(400).json(error);
   }
 });
+
+// header('Access-Control-Allow-Origin', 'http://localhost:5173')
+
+
+
 // READ users 
 //get /users - devolver un json con todos los usuaruios en la base de datos
 //select * from users;
