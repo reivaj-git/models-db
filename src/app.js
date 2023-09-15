@@ -24,6 +24,15 @@ db.sync()
 
 const app = express();
 
+// const whitelist = ['http://localhost:8000', 'http://localhost:5173']
+// const corsOption = { 
+//   origin: (origin, cb) => {
+//     if (!whitelist.includes(origin)) {
+//      return cb(new error('not allowed'))//error first
+//     }
+//     cb(null, true);
+//   }
+// }
 app.use(express.json());
 app.use(cors());
 
@@ -40,7 +49,10 @@ app.post("/users", async (req, res) => {
     // mandar esta info a la base de datos
     // * insert into users (username, email, password)
     const user = await User.create(body);
-    res.status(201).json(user);
+    res
+      .header("Access-Control-Allow-Origin", "http://localhost:5173")
+      .status(201)
+      .json(user);
   } catch (error) {
     res.status(400).json(error);
   }
@@ -109,4 +121,3 @@ app.listen(PORT, () => {
 });
 
 
-// 1.10.40
